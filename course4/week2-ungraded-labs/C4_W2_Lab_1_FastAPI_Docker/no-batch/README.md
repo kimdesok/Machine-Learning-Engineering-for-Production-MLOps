@@ -1,7 +1,15 @@
-###NOTE
-1) Worked at the folder in my case: C:\Users\DKim\machine-learning-engineering-for-production-public\course4\week2-ungraded-labs\C4_W2_Lab_1_FastAPI_Docker\no-batch
-2) Changed the json files to ANSI encoding under the wind-examples folder
-3) Changed the curl command to curl.exe.
+##NOTE
+1) Bring up wsl and Jupyter notebook at Powershells
+
+2) Execute FastAPI at Jupyter notebook
+
+3) Bring up a powershell window to work on inference.  Change the working direcotry to the proper folder : C:\Users\DKim\machine-learning-engineering-for-production-public\course4\week2-ungraded-labs\C4_W2_Lab_1_FastAPI_Docker\no-batch in my case.
+
+4) Changed the json files to ANSI encoding under the wind-examples folder
+
+5) Excute curl.exe instead of curl.
+
+###Results
 
 PS C:\Users\DKim\machine-learning-engineering-for-production-public\course4\week2-ungraded-labs\C4_W2_Lab_1_FastAPI_Docker\no-batch> curl.exe -X POST http://localhost/predict  -H accept: application/json -H 'Content-Type: application/json' -d '@./wine-examples/1.json'
 {"Prediction":1}curl: (6) Could not resolve host: application
