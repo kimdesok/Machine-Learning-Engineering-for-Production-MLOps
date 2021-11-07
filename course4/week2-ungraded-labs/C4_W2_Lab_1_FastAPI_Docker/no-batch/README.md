@@ -1,3 +1,8 @@
+###NOTE
+1) Worked at the folder in my case: C:\Users\DKim\machine-learning-engineering-for-production-public\course4\week2-ungraded-labs\C4_W2_Lab_1_FastAPI_Docker\no-batch
+2) Changed the json files to ANSI encoding under the wind-examples folder
+3) Changed the curl command to curl.exe.
+
 ## One prediction per request
 
 You can find all of the following code in the `no-batch/` directory. In your terminal `cd` to this directory to continue with the lab. If you are currently within the root of the repo you can use the command `cd course4/week2-ungraded-labs/C4_W2_Lab_1_FastAPI_Docker/no-batch/`.
