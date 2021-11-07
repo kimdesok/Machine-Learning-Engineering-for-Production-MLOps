@@ -1,4 +1,4 @@
-##NOTE
+## NOTE
 1) Bring up wsl and Jupyter notebook at Powershells
 
 2) Execute FastAPI at Jupyter notebook
@@ -9,7 +9,7 @@
 
 5) Excute curl.exe instead of curl.
 
-###Results
+### Results
 
 PS C:\Users\DKim\machine-learning-engineering-for-production-public\course4\week2-ungraded-labs\C4_W2_Lab_1_FastAPI_Docker\no-batch> curl.exe -X POST http://localhost/predict  -H accept: application/json -H 'Content-Type: application/json' -d '@./wine-examples/1.json'
 {"Prediction":1}curl: (6) Could not resolve host: application
