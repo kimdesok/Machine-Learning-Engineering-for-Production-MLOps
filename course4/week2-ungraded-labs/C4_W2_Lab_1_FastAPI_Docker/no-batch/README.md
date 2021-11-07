@@ -3,6 +3,13 @@
 2) Changed the json files to ANSI encoding under the wind-examples folder
 3) Changed the curl command to curl.exe.
 
+PS C:\Users\DKim\machine-learning-engineering-for-production-public\course4\week2-ungraded-labs\C4_W2_Lab_1_FastAPI_Docker\no-batch> curl.exe -X POST http://localhost/predict  -H accept: application/json -H 'Content-Type: application/json' -d '@./wine-examples/1.json'
+{"Prediction":1}curl: (6) Could not resolve host: application
+
+PS C:\Users\DKim\machine-learning-engineering-for-production-public\course4\week2-ungraded-labs\C4_W2_Lab_1_FastAPI_Docker\no-batch> curl.exe -X POST http://localhost/predict  -H accept: application/json -H 'Content-Type: application/json' -d '@./wine-examples/2.json'
+{"Prediction":2}curl: (6) Could not resolve host: application
+
+
 ## One prediction per request
 
 You can find all of the following code in the `no-batch/` directory. In your terminal `cd` to this directory to continue with the lab. If you are currently within the root of the repo you can use the command `cd course4/week2-ungraded-labs/C4_W2_Lab_1_FastAPI_Docker/no-batch/`.
