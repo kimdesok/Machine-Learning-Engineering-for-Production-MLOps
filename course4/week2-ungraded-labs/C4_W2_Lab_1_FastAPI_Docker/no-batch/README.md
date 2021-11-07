@@ -1,3 +1,7 @@
+###NOTE
+>* This tutorial has been modified slightly to work with the Windows running PC implementation.  In addition, the platform needs to be clarified.
+#This part is performed at Jupyter notebook running on your PC
+
 ## One prediction per request
 
 You can find all of the following code in the `no-batch/` directory. In your terminal `cd` to this directory to continue with the lab. If you are currently within the root of the repo you can use the command `cd course4/week2-ungraded-labs/C4_W2_Lab_1_FastAPI_Docker/no-batch/`.
@@ -96,6 +100,8 @@ def predict(wine: Wine):
 
 ```
 Now the server's code is ready for inference, although you still need to spin it up. If you want to try it locally (given that you have the required dependencies installed) you can do so by using the command `uvicorn main:app --reload` while on the same directory as the `main.py` file. **However this is not required as you will be dockerizing this server next**.
+
+# This is part can be just perused although it says it needs to be run.  
 
 ## Dockerizing the server
 
@@ -199,9 +205,9 @@ COPY ./app /app
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
 ```
 
-Remember you can also look at it within the `no-batch` directory.
+#(maybe important) Remember you can also look at it within the `no-batch` directory.
 
-
+#This part needs to be run at Windows Powershell.
 ## Build the image
 
 Now that the `Dockerfile` is ready and you understand its contents, it is time to build the image. To do so, double check that you are within the `no-batch` directory and use the `docker build` command.
@@ -231,11 +237,12 @@ At the end of the command is the name and tag of the image you want to run.
 
 After some seconds the container will start and spin up the server within. You should be able to see FastAPI's logs being printed in the terminal. 
 
+#Do try this by clicking the link
 Now head over to [localhost:80](http://localhost:80) and you should see a message about the server spinning up correctly.
 
 **Nice work!**
 
-## Make requests to the server
+## Make requests to the server (Just peruse!)
 
 Now that the server is listening to requests on port 80, you can send `POST` requests to it for predicting classes of wine.
 
@@ -287,8 +294,15 @@ curl -X 'POST' http://localhost/predict \
 
 Or you can use a `JSON` file to avoid typing a long command like this:
 
+#DO THIS at the appropriate folder. In my case, it was 
+# C:\Users\DKim\machine-learning-engineering-for-production-public\course4\week2-ungraded-labs\C4_W2_Lab_1_FastAPI_Docker\no-batch
+
+#I have changed the json files to ANSI encoding to make sure it works although not sure it helped or not.
+# Make sure the command is "curl.exe' not f*cking 'curl' that generated the error.  The instructor or TA have been ignorant.
+
+
 ```bash
-curl -X POST http://localhost:80/predict \
+curl.exe -X POST http://localhost:80/predict \
     -d @./wine-examples/1.json \
     -H "Content-Type: application/json"
 ```
