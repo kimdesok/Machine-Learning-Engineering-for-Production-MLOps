@@ -6,6 +6,8 @@ Begin the `cd`ing into the `with-batch` directory. If you are currently within t
 
 ## Update the server
 
+## NOTE : Run this at the Jupyter notebook
+
 Remember that this code can be find within the `app/main.py` file.
 
 First of all you will need two extra imports to handle prediction by batches. Both are related to handling list-like data. These are `List` from `typing` and `conlist` from `pydantic`. Remember that `REST` does not support objects like numpy arrays so you need to serialize this kind of data into lists. The imports will now look like this:
@@ -33,6 +35,13 @@ Finally you will update the `predict` endpoint since loading the classifier is t
 Since scikit-learn accepts batches of data represented by numpy arrays you can simply get the batches from the `wine` object, which are lists, and convert it to numpy arrays before feeding it to the classifier. Once again you need to convert the predictions to a list to make them REST-compatible:
 
 ```python
+@app.on_event("startup")
+def load_clf():
+    # Load classifier from pickle file
+    with open("/app/wine.pkl", "rb") as file:
+        global clf
+        clf = pickle.load(file)
+        
 @app.post("/predict")
 def predict(wine: Wine):
     batches = wine.batches
@@ -44,6 +53,8 @@ def predict(wine: Wine):
 With these minor changes your server is now ready to accept batches of data! Pretty cool!
 
 ## Building a new version of the image
+
+## NOTE : Run this at the powershell!!!!
 
 The Dockerfile for this new version of the server is identical to the previous one. The only changes were done within the `main.py` file so the Dockerfile remains the same.
 
@@ -103,10 +114,9 @@ Once again it is time to test your server by actually using it for prediction. I
 To get the predictions for a batch of 32 wines (found in the batch_1.json file) you can send a `POST` request to the server using `curl` like this:
 
 ```bash
-curl -X POST http://localhost:81/predict \
-    -d @./wine-examples/batch_1.json \
-    -H "Content-Type: application/json"
+PS C:\users\DKim\machine-learning-engineering-for-production-public\course4\week2-ungraded-labs\C4_W2_Lab_1_FastAPI_Docker\with-batch> curl.exe -X POST http://localhost:81/predict -d '@./wine-examples/batch_1.json' -H "Content-Type: application/json"
 ```
+{"Prediction":[2,1,1,0,1,0,0,1,0,0,2,1,1,1,0,1,1,1,2,2,0,1,2,2,1,1,0,1,2,2,1,2]}
 
 Now you should see a list with the 32 predictions (in order) for each one of the data points within the batch. **Nice work!**
 
