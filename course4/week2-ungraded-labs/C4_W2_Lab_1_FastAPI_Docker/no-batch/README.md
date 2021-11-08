@@ -288,9 +288,8 @@ curl -X 'POST' http://localhost/predict \
 Or you can use a `JSON` file to avoid typing a long command like this:
 
 ```bash
-curl -X POST http://localhost:80/predict \
-    -d @./wine-examples/1.json \
-    -H "Content-Type: application/json"
+PS C:\users\DKim\machine-learning-engineering-for-production-public\course4\week2-ungraded-labs\C4_W2_Lab_1_FastAPI_Docker\no-batch> curl.exe -X POST http://localhost:80/predict -d '@./wine-examples/1.json' -H "Content-Type: application/json"
+{"Prediction":1}
 ```
 
 Let's understand the flags used:
